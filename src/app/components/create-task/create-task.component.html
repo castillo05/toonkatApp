@@ -1,0 +1,89 @@
+<div class="container">
+  <div class="row">
+    <div class="col-sm-8 mx-auto">
+        <h1 class="text-center mt-4">Crear Tarea</h1>
+        <hr>
+
+        <form (ngSubmit)="onSubmit()" #taskForm="ngForm">
+          <h2 class="text-center">Pickup</h2>
+          <a class="badge btn-secondary" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+            -
+          </a>
+          <div  id="collapseExample">
+          <div class="row">
+            <div class="col">
+              <input reqired name="job_pickup_name" id="job_pickup_name" #job_pickup_name="ngModel" [(ngModel)]="pickup.job_pickup_name" type="text" class="form-control" placeholder="Name">
+            </div>
+            <div class="col">
+              <input required name="job_pickup_phone" id="job_pickup_phone" #job_pickup_phone="ngModel" [(ngModel)]="pickup.job_pickup_phone" type="text" class="form-control" placeholder="Telephone">
+            </div>
+          </div>
+          <div class="row mt-3">
+            <div class="col">
+              <input required name="job_pickup_email" id="job_pickup_email" #job_pickup_email="ngModel" [(ngModel)]="pickup.job_pickup_email" type="email" class="form-control" placeholder="email">
+            </div>
+            <div class="col">
+              <input required name="order_id" id="order_id" #order_id="ngModel" [(ngModel)]="pickup.order_id" type="text" class="form-control" placeholder="Order ID">
+            </div>
+          </div>
+
+          <div class="form-group mt-3">
+
+            <input required name="job_pickup_address" id="job_pickup_address" #job_pickup_address="ngModel" [(ngModel)]="pickup.job_pickup_address" type="text" class="form-control" placeholder="Pickup Address">
+          </div>
+
+          <div class="form-group">
+
+            <input required name="job_pickup_datetime" id="job_pickup_datetime" #job_pickup_datetime="ngModel" [(ngModel)]="pickup.job_pickup_datetime" type="datetime-local" class="form-control" placeholder="Pickup Before">
+          </div>
+
+          <div class="form-group">
+
+            <textarea required name="job_description" id="job_description" #job_description="ngModel" [(ngModel)]="pickup.job_description" class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="Description"></textarea>
+          </div>
+          </div>
+          <hr>
+
+          <h2 class="text-center">Delivery</h2>
+          <a class="badge btn-secondary" data-toggle="collapse" href="#collapseExample2" role="button" aria-expanded="false" aria-controls="collapseExample2">
+            -
+          </a>
+          <div id="collapseExample2" class="mb-5">
+            <div class="row">
+              <div class="col">
+                <input required name="customer_username" id="customer_username" #customer_username="ngModel" [(ngModel)]="delivery.customer_username" type="text" class="form-control" placeholder="Name">
+              </div>
+              <div class="col">
+                <input required name="customer_phone" id="customer_phone" #customer_phone="ngModel" [(ngModel)]="delivery.customer_phone" type="text" class="form-control" placeholder="Telephone">
+              </div>
+            </div>
+            <div class="row mt-3">
+              <div class="col">
+                <input required name="customer_email" id="customer_email" #customer_email="ngModel" [(ngModel)]="delivery.customer_email" type="email" class="form-control" placeholder="email">
+              </div>
+              <div class="col">
+                <input required name="order_id" id="order_id" #order_id="ngModel" [(ngModel)]="delivery.order_id" type="text" class="form-control" placeholder="Order ID">
+              </div>
+            </div>
+
+            <div class="form-group mt-3">
+
+              <input required name="customer_address" id="customer_address" #customer_address="ngModel" [(ngModel)]="delivery.customer_address" type="text" class="form-control" placeholder="Pickup Address">
+            </div>
+
+            <div class="form-group">
+
+              <input required name="job_delivery_datetime" id="job_delivery_datetime" #job_delivery_datetime="ngModel" [(ngModel)]="delivery.job_delivery_datetime" type="datetime-local" class="form-control" placeholder="Delivery Before">
+            </div>
+
+            <div class="form-group">
+
+              <textarea required name="job_description" id="job_description" #job_description="ngModel" [(ngModel)]="pickup.job_description" class="form-control"  rows="3" placeholder="Description"></textarea>
+            </div>
+        </div>
+        <hr>
+          <button [disabled]="taskForm.invalid" type="submit" class="btn btn-primary mb-5">Create Task</button>
+        </form>
+    </div>
+  </div>
+</div>
