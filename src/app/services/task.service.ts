@@ -31,4 +31,13 @@ export class TaskService {
 
      return this.http.post(this.urlBase+'create_task',task,{headers});
    }
+
+   getdetailsTask(task){
+     const headers= new HttpHeaders({
+      'Content-Type': 'application/json',
+
+
+     })
+     return this.http.post(this.urlBase+'get_job_details',task,{headers});
+   }
 }

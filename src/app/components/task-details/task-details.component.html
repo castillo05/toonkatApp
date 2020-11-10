@@ -1,0 +1,28 @@
+<div class="container">
+    <div class="row mx-auto" >
+        <div class="row-sm-12">
+            <h2> Tarea realizada recientemente  </h2>          
+            <h3>JOBS ID: </h3>
+            <hr>
+           <table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Job ID</th>
+      <th scope="col">Name</th>
+      <th scope="col">Phone</th>
+      <th scope="col">Handle</th>
+    </tr>
+  </thead>
+  <tbody  *ngFor="let t of task">
+    <tr>
+      <th scope="row"># {{t.job_id}}</th>
+      <td>{{t.customer_username}}</td>
+      <td>{{t.customer_phone}}</td>
+      <td>{{t.job_id}}</td>
+    </tr>
+   
+  </tbody>
+</table>
+         </div>
+    </div>
+</div>
