@@ -15,6 +15,8 @@ export class TaskDetailsComponent implements OnInit {
   public job_ids:any
   public task:any;
   public details:any;
+  public alert:any;
+  public response:any;
   constructor(private TaskService: TaskService) {
     this.api=URL.key;
   }
@@ -41,9 +43,11 @@ export class TaskDetailsComponent implements OnInit {
       job_status:1
     }
     this.TaskService.startTaskService(task).subscribe((res)=>{
-      console.log(res)
-      if(res){
-        Swal.fire('!',res.message, 'success')
+      this.response=res;
+      console.log(this.response)
+      if(this.response){
+        this.alert=this.response.message;
+        Swal.fire('!',this.alert, 'success')
       }
     },error=>{
       console.log(error)
@@ -60,9 +64,10 @@ export class TaskDetailsComponent implements OnInit {
       include_task_history:0
     }
     this.TaskService.detailsTaskService(task).subscribe((res)=>{
-      console.log(res)
-      if(res.status ===200){
-        this.details=res.data;
+      this.response=res;
+      console.log(this.response)
+      if(this.response.status ===200){
+        this.details=this.response.data;
       }
     },error=>{
       console.log(error)
@@ -77,9 +82,10 @@ export class TaskDetailsComponent implements OnInit {
       job_status:9
     }
     this.TaskService.cancelTaskService(task).subscribe((res)=>{
-      console.log(res)
-      if(res){
-        Swal.fire('!',res.message, 'success')
+      this.response=res;
+      console.log(this.response)
+      if(this.response){
+        Swal.fire('!',this.response.message, 'success')
       }
     },error=>{
       console.log(error)
