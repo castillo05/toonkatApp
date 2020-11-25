@@ -67,4 +67,15 @@ export class TaskService {
      })
      return this.http.post(this.urlBase+'cancel_task',task,{headers});
    }
+
+   deleteTaskService(task){
+
+    const headers= new HttpHeaders({
+      'Content-Type': 'application/json',
+
+
+     })
+     console.log(task);
+     return this.http.post(this.urlBase+'delete_task',task,{headers});
+   }
 }

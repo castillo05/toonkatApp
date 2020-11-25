@@ -71,12 +71,14 @@
   <tbody  *ngFor="let t of task">
     <tr>
       <th scope="row"># {{t.job_id}}</th>
+
       <td>{{t.job_pickup_name}}</td>
       <td>{{t.job_pickup_address}}</td>
       <td>{{t.tracking_link}}</td>
       <td>
-        <a (click)="startTask(t.job_id)" class="btn btn-success m-1">Start Task</a>
-        <a (click)="cancelTask(t.job_id)" class="btn btn-danger m-1">Cancel Task</a>
+        <a (click)="startTask(t.job_id)" class="btn btn-info m-1">Start Task</a>
+        <a (click)="cancelTask(t.job_id)" class="btn btn-warning m-1">Cancel Task</a>
+        <a (click)="DeleteTask(t.job_id)" class="btn btn-danger m-1">Delete Task</a>
         <a data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo" (click)="detailsTask(t.job_id)" class="btn btn-dark m-1">Task Details</a>
       </td>
     </tr>

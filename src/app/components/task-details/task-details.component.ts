@@ -3,6 +3,7 @@ import {TaskDetails} from 'src/app/models/task-details';
 import {TaskService} from 'src/app/services/task.service';
 import {URL} from '../../services/GLOBAL';
 import Swal from 'sweetalert2/dist/sweetalert2.js';
+import '@angular/compiler';
 
 @Component({
   selector: 'app-task-details',
@@ -82,6 +83,25 @@ export class TaskDetailsComponent implements OnInit {
       job_status:9
     }
     this.TaskService.cancelTaskService(task).subscribe((res)=>{
+      this.response=res;
+      console.log(this.response)
+      if(this.response){
+        Swal.fire('!',this.response.message, 'success')
+      }
+    },error=>{
+      console.log(error)
+    })
+  }
+
+
+  DeleteTask(job_id:string){
+
+    const task={
+      api_key:this.api,
+      job_id:job_id,
+
+    }
+    this.TaskService.deleteTaskService(task).subscribe((res)=>{
       this.response=res;
       console.log(this.response)
       if(this.response){
