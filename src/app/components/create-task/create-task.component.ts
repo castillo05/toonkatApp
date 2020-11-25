@@ -57,11 +57,15 @@ public array_data:any[]=[];
 
       if(res.status===200){
         let task=JSON.parse(localStorage.getItem("pickup"));
-        console.log(task)
-        this.array_data=task;
-        this.array_data.push(res.data)
-        localStorage.setItem('pickup',JSON.stringify( this.array_data))
-
+        if(task){
+          console.log(task)
+          this.array_data=task;
+          this.array_data.push(res.data)
+          localStorage.setItem('pickup',JSON.stringify( this.array_data))
+        }else{
+          this.array_data.push(res.data)
+          localStorage.setItem('pickup',JSON.stringify( this.array_data))
+        }
               this.TaskService.createTask(this.delivery).subscribe((res2:any)=> {
                 if(!res2) return console.log('Error. Tarea no creada');
 
