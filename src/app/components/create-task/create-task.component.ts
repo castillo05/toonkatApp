@@ -19,7 +19,7 @@ export class CreateTaskComponent implements OnInit {
   public delivery:Delivery;
   public test :any;
   public key = URL.key;
-public array_data=[];
+public array_data:any[]=[];
 
   constructor(private TaskService: TaskService,public fb: FormBuilder,private router: Router) {
     this.pickup=new Pickup(this.key,'','','','','','','','','','0','','0','0','1','1','0','1','0','','','360');
@@ -54,13 +54,15 @@ public array_data=[];
 
 
       }
-     
+
       if(res.status===200){
-      
+        let task=JSON.parse(localStorage.getItem("pickup"));
+        console.log(task)
+        this.array_data=task;
         this.array_data.push(res.data)
-        localStorage.setItem('pickup',JSON.stringify(res.data))
-       
-              this.TaskService.createTask(this.pickup).subscribe((res2:any)=> {
+        localStorage.setItem('pickup',JSON.stringify( this.array_data))
+
+              this.TaskService.createTask(this.delivery).subscribe((res2:any)=> {
                 if(!res2) return console.log('Error. Tarea no creada');
 
                 if(res2.status!=200){

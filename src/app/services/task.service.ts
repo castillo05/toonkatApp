@@ -40,4 +40,31 @@ export class TaskService {
      })
      return this.http.post(this.urlBase+'get_job_details',task,{headers});
    }
+
+   startTaskService(task){
+    const headers= new HttpHeaders({
+      'Content-Type': 'application/json',
+
+
+     })
+     return this.http.post(this.urlBase+'start_task',task,{headers});
+   }
+
+   detailsTaskService(task){
+    const headers= new HttpHeaders({
+      'Content-Type': 'application/json',
+
+
+     })
+     return this.http.post(this.urlBase+'get_job_details',task,{headers});
+   }
+
+   cancelTaskService(task){
+    const headers= new HttpHeaders({
+      'Content-Type': 'application/json',
+
+
+     })
+     return this.http.post(this.urlBase+'cancel_task',task,{headers});
+   }
 }

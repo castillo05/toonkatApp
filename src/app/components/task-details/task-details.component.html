@@ -1,7 +1,61 @@
 <div class="container">
+
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Task Details</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form>
+          <div *ngFor="let item of details">
+            <div class="form-group" >
+              <label for="recipient-name" class="col-form-label">Customer Email:</label>
+              <input readonly type="text" class="form-control" id="recipient-name" value="{{item.customer_email}}">
+            </div>
+            <div class="form-group" >
+              <label for="recipient-name" class="col-form-label">Customer phone:</label>
+              <input readonly type="text" class="form-control" id="recipient-name" value="{{item.customer_phone}}">
+            </div>
+            <div class="form-group" >
+              <label for="recipient-name" class="col-form-label">Customer Name:</label>
+              <input readonly type="text" class="form-control" id="recipient-name" value="{{item.customer_username}}">
+            </div>
+            <hr>
+            <div class="form-group" >
+              <label for="recipient-name" class="col-form-label">Pickup Email:</label>
+              <input readonly type="text" class="form-control" id="recipient-name" value="{{item.job_pickup_email}}">
+            </div>
+            <div class="form-group" >
+              <label for="recipient-name" class="col-form-label">Pickup Name:</label>
+              <input readonly type="text" class="form-control" id="recipient-name" value="{{item.job_pickup_name}}">
+            </div>
+            <div class="form-group" >
+              <label for="recipient-name" class="col-form-label">Pickup Phone:</label>
+              <input readonly type="text" class="form-control" id="recipient-name" value="{{item.job_pickup_phone}}">
+            </div>
+            <div class="form-group" >
+              <label for="recipient-name" class="col-form-label">Pickup Address:</label>
+              <input readonly type="text" class="form-control" id="recipient-name" value="{{item.job_pickup_address}}">
+            </div>
+          </div>
+
+
+        </form>
+      </div>
+      <div class="modal-footer">
+        <!-- <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Send message</button> -->
+      </div>
+    </div>
+  </div>
+</div>
     <div class="row mx-auto" >
         <div class="row-sm-12">
-            <h2> Tarea realizada recientemente  </h2>          
+            <h2> Tarea realizada recientemente  </h2>
             <h3>JOBS ID: </h3>
             <hr>
            <table class="table">
@@ -9,18 +63,24 @@
     <tr>
       <th scope="col">Job ID</th>
       <th scope="col">Name</th>
-      <th scope="col">Phone</th>
-      <th scope="col">Handle</th>
+      <th scope="col">Address</th>
+      <th scope="col">tracking_link</th>
+      <th scope="col">Actions</th>
     </tr>
   </thead>
   <tbody  *ngFor="let t of task">
     <tr>
       <th scope="row"># {{t.job_id}}</th>
-      <td>{{t.customer_username}}</td>
-      <td>{{t.customer_phone}}</td>
-      <td>{{t.job_id}}</td>
+      <td>{{t.job_pickup_name}}</td>
+      <td>{{t.job_pickup_address}}</td>
+      <td>{{t.tracking_link}}</td>
+      <td>
+        <a (click)="startTask(t.job_id)" class="btn btn-success m-1">Start Task</a>
+        <a (click)="cancelTask(t.job_id)" class="btn btn-danger m-1">Cancel Task</a>
+        <a data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo" (click)="detailsTask(t.job_id)" class="btn btn-dark m-1">Task Details</a>
+      </td>
     </tr>
-   
+
   </tbody>
 </table>
          </div>
